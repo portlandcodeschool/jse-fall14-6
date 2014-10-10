@@ -34,5 +34,5 @@ Ctor.prototype.d = 3;
 
 
 
-// B) When objA is set, 
+// B) When objA is built, it'g given an object as it's constructor. But when objB is built, it uses the function B's prototype which includes .num and .str properties instead of objA that was given a full object as it's construtor that just happens to have some properties and values inside that object. It's trying to be a shortcut but instead is ruining it.
 
