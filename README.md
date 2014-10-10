@@ -5,9 +5,10 @@ Due Mon. 10/13
 
  **1)  Constructor basics** _[easy, 1/2 hr]_
 
-**a)** Here's a sequence of simple exercises related to how constructors and prototypes work.
+**a)** Heres a sequence of simple exercises related to how constructors and prototypes work.
 
--   First make a constructor named _Ctor_ for an object that has properties _a_ and _b_ and initializes them to 0 and 1 respectively.
+-   First make a constructor named _Ctor_ for an object that has properties _a_ and _b_ and initializes them to 0 and 1 
+respectively.
 -   Now, make two objects named _obj1_ and _obj2_ using _Ctor_.
 -   Now make a new object _obj3_ this way:
     ```
@@ -16,8 +17,9 @@ Due Mon. 10/13
     ```
 
     and check its properties.
--   Next, add a property _c_ to _obj1_ with a value of 2.  What will be the value of _obj2.c_?
--   Now, add a property _d_ with the value 3 to _obj1_'s "proto" (the object which helps out when _obj1_ can't do something by itself).  Remember that there are at least four ways of referring to that proto object.
+-   Next, add a property _c_ to _obj1_ with a value of 2.  What will be the value of _obj2.c_? //undefined
+-   Now, add a property _d_ with the value 3 to _obj1_s "proto" (the object which helps out when _obj1_ cant do something 
+	by itself).  Remember that there are at least four ways of referring to that proto object.
 -   What are the values of _obj1.d_, _obj2.d_, and _obj3.d_? Can you explain the results?
 
 
@@ -72,7 +74,7 @@ pengo instanceof Animal;  //true
 Rewrite your _makeCard_ factory as a constructor _Card_.  You should define your constructor and any supplementary code inside an IIFE and export it to a global variable _Card_.
 
 _Card_ should initialize card objects which have the same four instance methods as before (`rank()`, `suit()`, `color()`, and `name()`), plus another method `isValid()`, which returns _true_ if the card has a valid id.
-Implement each of those instance methods using _Card_'s prototype instead of linking them to each card.  Make sure each method uses `this` to refer to the card instance.
+Implement each of those instance methods using _Card_s prototype instead of linking them to each card.  Make sure each method uses `this` to refer to the card instance.
 
 _Card_ should also have four class methods which are called through the constructor:
 
@@ -92,7 +94,7 @@ There are multiple ways of organizing your module to satisfy these requirements,
 1. Tarot cards have no color, and should have no such method.
 1. Each tarot card can be oriented normally or upside-down, and has a boolean instance property reflecting that orientation.
 
-The _TarotCard_ constructor is implemented in a separate module, and it has been written completely in the [template](template-tarot.js).  You don't need to change anything in that module.  But you should write your _Card_ module in such a way that _TarotCard_ can sucessfully inherit from it.  An expression like `card = new Card(51)` should make an object with Card behavior, and `tarot = new TarotCard(51)` should make an object with Tarot behavior.
+The _TarotCard_ constructor is implemented in a separate module, and it has been written completely in the [template](template-tarot.js).  You dont need to change anything in that module.  But you should write your _Card_ module in such a way that _TarotCard_ can sucessfully inherit from it.  An expression like `card = new Card(51)` should make an object with Card behavior, and `tarot = new TarotCard(51)` should make an object with Tarot behavior.
 The two classes should be able to co-exist and pass all of the tests in the template.
 
 
@@ -100,9 +102,9 @@ The two classes should be able to co-exist and pass all of the tests in the temp
 **4) Memory Game** _[moderate, 4 hours]_
 
 Write a game of Memory, in which some set of cards are arranged face down on a board and a player turns them over looking for pairs.
-In this version, your board will be a single row of cards (later you'll convert it to a 2D grid) which are identified by a single position number.
+In this version, your board will be a single row of cards (later youll convert it to a 2D grid) which are identified by a single position number.
 
-_[UPDATE: You can write the constructor using either public data accessible to a prototype, or private data in a closure with dedicated methods.  But you'll find in difficult to combine them.  Pick one strategy or the other.]_
+_[UPDATE: You can write the constructor using either public data accessible to a prototype, or private data in a closure with dedicated methods.  But youll find in difficult to combine them.  Pick one strategy or the other.]_
 
 Use a constructor ~~and prototype~~ _(optional)_, packaged in an IIFE, to implement a game board.
 Your _MemoryBoard_ constructor should receive 3 arguments:
@@ -125,7 +127,7 @@ Your board should have these instance methods:
 
 * `remaining()` returns an array of the positions of all cards still on the board.
 
-* `lift(where)`  If there is a face-down card at position _where_ (a single number), return its value; otherwise return _false_.  If there is not currently a face-up card, leave this card face-up.  If there's already a face-up card, do one of the following:
+* `lift(where)`  If there is a face-down card at position _where_ (a single number), return its value; otherwise return _false_.  If there is not currently a face-up card, leave this card face-up.  If theres already a face-up card, do one of the following:
 
 	* If this card and the face-up card match (according to your matching callback), remove both from the board.  If all pairs are removed from the board, you win the game; run the "win" callback, if any.
 
