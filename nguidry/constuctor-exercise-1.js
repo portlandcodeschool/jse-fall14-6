@@ -45,3 +45,33 @@ obj1.___proto___.d = 3;
 // if the prototype has a property of d. This is because, by setting the prototype 
 // through object 1, we told the constructor to give each object made from that 
 // contstructor the same prototype object that contains the property d. 
+
+
+// 1b
+// Consider this code:
+
+function A() {};
+//set default values for instances of A:
+A.prototype = {num:0, str:'default'};
+var objA = new A();
+
+function B() {};
+// set default values for instances of B:
+B.prototype.num = 0;
+B.prototype.str = 'default';
+var objB = new B();
+// There is a difference between the behaviors of objA and objB! Explain.
+
+// In objA, you are wiping out the prototype and replacing the prototype 
+// 'property' with a new object, only containing properties of 'num' and 
+// 'str'. In objB, you are just adding the properties 'num' and 'str' to 
+// the existing prototype.
+
+
+
+
+
+
+
+
+
