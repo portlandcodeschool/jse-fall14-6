@@ -1,8 +1,56 @@
 // This IIFE will define a superclass:
-var Card = (function(){
+var Card = (function(id) {
+	this.id = id;
+	this.rank = function() {
+		return Math.floor(this.id/4)+1
+	}
 
-	// Your code here
+	this.suit = function() {
+		return (this.id%4)+1
+	}
 
+	this.color = function() {
+		var suit = this.suit();
+		return ((suit<3)? "red": "black");
+	}
+
+	this.name = function() {
+		var ranks = this.rankNames();
+		var suits = this.suitNames();
+		var cardRank = this.rank() - 1;
+		var cardSuit = this.suit() - 1;
+		return cardRank && cardSuit && ([cardRank] + " of " + suits[cardSuit]);
+	}
+
+	this.isValid = function() {
+	    if ((typeof this.id)!="number" || this.id%1 !== 0 || 
+	            this.id < 0 || this.id > 51) {
+	        return null;
+	    }
+	    return true;
+	}
+
+	this.isCard = function(card) {
+	    if ((typeof card)!="object") {
+	            return null;
+	    }
+	    if (!("id" in card) || !card.rank || !card.suit || !card.color || !card.name || !card.isValid) {
+	        return null;
+	    }
+	    return true;
+	}
+
+	this.numCards = function() {
+		return 52;
+	}
+
+	this.rankNames = function() {
+		return ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+	}
+
+	this.suitNames = function() {
+		return ["Hearts", "Diamonds", "Spades", "Clubs"];
+	}
 })();
 
 
