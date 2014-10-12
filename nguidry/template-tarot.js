@@ -2,11 +2,11 @@
 var Card = (function(id) {
 	this.id = id;
 	this.rank = function() {
-		return Math.floor(this.id/4)+1
+		return Math.floor(this.id/4)+1;
 	}
 
 	this.suit = function() {
-		return (this.id%4)+1
+		return (this.id%4)+1;
 	}
 
 	this.color = function() {
