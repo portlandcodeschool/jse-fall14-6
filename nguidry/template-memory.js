@@ -1,75 +1,99 @@
 var MemoryBoard = (function() {
+	var gameValues = [];
+
 	function Ctor(values,matchFn,displayFn,endgameFn) {
-		//verify even number of input values
-		//slice values array to new array for memory game
-
-		gameValues = values.slice();
-
 		//simple matchFn callback (user inputs what a match is)
-
-		match = matchFn;
 
 		//"an optional 'display' callback which takes 1 parameter 
 		//(the raw value of a card from the values array) and 
 		//converts it to another value. If this argument is undefined 
 		//or null, the raw value will be displayed instead"
 
-		display = displayFn;
-
 		//an optional "win" callback which takes no arguments and is 
 		//run when the game ends.
 
-		endgame = endgameFn;
+		//Your board must keep track of whether and where any card is face up, 
+		//where any matching cards have been removed, and where unmatched cards 
+		//remain.
+
+		//verify even number of input values
+
+		if(!(values % 2 == 0)) {return "Gotta have an even number of cards to make matches!"}
+
+		//turn values array into objects within gameTokens array
+
+		function tokensToObjects(values) {
+  			//build empty array for game tokens
+  			var gameTokens = [];
+  			//run through each value in the array
+  			for (var i = 0; i < values.length; ++i) {
+  				//create an empty object for the game token
+  				var obj = {
+  					facing = "down";
+  					inPlay = true;
+  					token = values[i];
+  				};
+  				//push object to gameTokens array
+  				gameTokens.push(obj);
+  			}
+  			return gameTokens;
+		}
+
+		//planning to give each "card" properties of up/down and in/out of play
+		//will run face-up/face-down/remaining/etc by evaluating the values of those properties
+
+		//instance methods go here
+
+		//reset() 
+
+		function reset() = {
+			//replaces all removed cards, 
+			for (var i = 0; i < this.gameTokens.length; ++i) {
+				for (prop in this.gameTokens[i]) {
+					this.gameTokens[i].inPlay = true;
+				}
+			}
+			//reshuffles the entire board, 
+
+			var end = this.gameTokens.length, temp, i;
+		  	while (end>1) {
+		    	i = Math.floor(Math.random() * end--);
+		    	temp = this.gameTokens[end];
+		    	this.gameTokens[end] = this.gameTokens[i];
+		    	this.gameTokens[i] = temp;
+		  	}
+			//and rebuilds the board face-down.
+			//done! already on the board!	
+		}
+
+
+		//faceupWhere() 
+		//returns the position (a number) of the one face-up card (if any), 
+		//otherwise returns false.
+
+		//faceupValue() 
+		//returns the value of the one face-up card (if any), 
+		//otherwise false.
+
+		//remaining() returns an array of the positions of all cards still 
+		//on the board.
+
+		//lift(where) 
+		//If there is a face-down card at position where (a single number) 
+		//return its display value (by calling the display callback on the card's raw value); 
+		//otherwise return false. 
+
+			//If there is not currently a face-up card, leave this card face-up. 
+
+			//If there's already a face-up card, do one of the following:
+				//If this card and the face-up card match (according to your 
+				//matching callback), remove both from the board. If all pairs 
+				//are removed from the board, you win the game; run the "win" 
+				//callback, if any.
+
+				//If there is no match, leave both cards in place and turn 
+				//them face down.
 	}
-
-	//Your board must keep track of whether and where any card is face up, 
-	//where any matching cards have been removed, and where unmatched cards 
-	//remain.
-
-	//game mechanics:
-
-	//users select card 1 with lift(where)
-	//card 1 is turned face up
-	//user selects card 2 with lift(where)
-	//run matchFn to determine if card 1 matches card 2
-		
-		//if no, both cards are flipped face down. alert user 'no match'
-		
-		//if yes, both cards are removed from the gameValues array and placed 
-		//in 'removedCards' array. removed spots from gameValues replaced with 'null'
-		//to determine places held
-
-	//repeat until no values are left in the gameValues array (trigger endgame cb)
-
-	//instance methods go here
-
-	//reset() replaces all removed cards, reshuffles the entire board, 
-	//and rebuilds the board face-down.
-
-	//faceupWhere() returns the position (a number) of the one face-up 
-	//card (if any), otherwise returns false.
-
-	//faceupValue() returns the value of the one face-up card (if any), 
-	//otherwise false.
-
-	//remaining() returns an array of the positions of all cards still 
-	//on the board.
-
-	//lift(where) If there is a face-down card at position where (a 
-	//single number), return its display value (by calling the display 
-	//callback on the card's raw value); otherwise return false. 
-
-	//If there is not currently a face-up card, leave this card face-up. 
-
-	//If there's already a face-up card, do one of the following:
-		//If this card and the face-up card match (according to your 
-		//matching callback), remove both from the board. If all pairs 
-		//are removed from the board, you win the game; run the "win" 
-		//callback, if any.
-
-		//If there is no match, leave both cards in place and turn 
-		//them face down.
-
 	return Ctor;
 })();
 
