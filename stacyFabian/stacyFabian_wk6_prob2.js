@@ -12,7 +12,7 @@ Animal.prototype.move = function() {
 function Bird(name) {
 	Animal.call(this,name);
 };
-Bird.prototype = new Animal;
+Bird.prototype = new Animal();
 Bird.prototype.constuctor = Bird;
 
 Bird.prototype.move = function() {return "fly";};
@@ -21,17 +21,18 @@ Bird.prototype.hasWings = true;
 function Fish(name) {
 	Animal.call(this,name)
 }
-Fish.prototype = new Animal;
+Fish.prototype = new Animal();
 Fish.prototype.constuctor = Fish;
 
-Fish.prototype.move = function() {return "swim";};
+Fish.prototype.move = function() {return "swim"};
 
 
 function Penguin(name) {
-	Animal.call(this,name);
+	Bird.call(this,name);
 };
-Penguin.prototype = new Bird;
+Penguin.prototype = new Bird();
 Penguin.prototype.constructor = Penguin;
-Penguin.prototype.move = function() {return "swim";};x
-
+// Penguin.prototype.move = function() {return "swim"};
+// correct
+Penguin.prototype.move = Fish.prototype.move;
 
