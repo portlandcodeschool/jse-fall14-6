@@ -112,8 +112,10 @@ var MemoryBoard = (function() {
 		};
 
 		this.remaining = function() { // return array of positions of all cards
+			var tempArr = [];
 			this.board.forEach(function logArrayElements(element, index, array) {
-				console.log(index);}) // returns positions, but not in an array
+				tempArr.push(index);})
+			console.log(tempArr);
 		};
 
 		this.lift = function(where) {
