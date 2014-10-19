@@ -30,7 +30,7 @@ Ctor.prototype.d = 3;
 
 // Explain (pre-test): Since all the object instances were created from the same Ctor constructor function, they all inherit the same properties from the parent function. And since the "d" property had not explicitly been set in any of the object instances, they refer back to Ctor's protptype and that has a set value for d thus they all have the value.
 
-// Explain (post-test): Since obj3 was created first as an empty object and then the Ctor function was used through the .call method, the properties of the Ctor applied only in that moment and at that moment property  and b were set but nothing else. And the when the propery d of Ctor.prototype was later set it didn't inherit to obj3 like it did obj1 or obj2.
+// Explain (post-test): Since obj3 was created first as an empty object and then the Ctor function was used through the .call method, the properties of the Ctor applied only in that moment and at that moment property a and b were set but nothing else. And the when the propery d of Ctor.prototype was later set it didn't inherit to obj3 like it did obj1 or obj2.
 
 
 

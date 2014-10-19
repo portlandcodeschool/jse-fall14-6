@@ -9,75 +9,84 @@
 		- takes 3 arguments
 			- array of game "cards"
 				- must be even number 
-					(check by doing if (array.length%2 == 0) to move on)
+					(check that by doing
+					 if (array.length%2 == 0)
+					 	then move on)
 			
 			- callback to compare the match for true or false 
 				- 'match' depends on the card type
 				
-			
-
-
-			
-
 - build the card set (array)
 	- assign each card a unique identifier
 	- include some sort of property that indicates the match or not
+		- set by the 'player' so just be a param that is evaluated for equality.
 
 
 
 // -- Coding
 function makeboard(array) {
-	var newArray = array.slice();
+	//var newArray = array.slice();
 	for (var card=0; card<array.length; ++card) {
 		position[array.card] = new Object {
-			value: array[card],
+			value: array[card].slice,
 			faceup: false;
 		};
 	}
 }
+// IFFE function
 function playMemory() {
 
-	function MemoryBoard(array,matchRule,arg3)
+	function MemoryBoard(array,matchRule,winFn)
 
 		var matchingRule = function matchRule(card1,card2) {
 			return matchRule(card1) === matchRule(card2);}
 		
 		function winCallBack() = {}
-			// - search for faceup = true value
+			// for loop to search for any !null values
+			for (var i=0; i<this.length; ++i) {}
+			// if everything is null then
+			return "Congratulations, you win!!"
 
-		function buildBoard() {
+		function reset() {
+			array = [];
+			array.length = 0;
+		}
 
-			function reset() {}
-
-			function faceupWhere() {
-				for (var pos=0; pos<array.length; ++pos) {
-					// array[pos].faceup = true
-					return array[pos];
+		function faceupWhere(input) {
+			for (var pos=0; pos<input.length; ++pos) {
+				if (input[pos].faceup === true) {
+					return pos
 				}
 			}
+		}
 
-			function faceupValue() {
-				return array[where];
+		function faceupValue(input) {
+			for (var pos=0; pos<input.length; ++pos) {
+		    	if (input[pos].faceup === true) {
+				return input[pos];
+				}
 			}
+		}
 
-			function lift(where) {}
-			- first look if array[where].faceup = true
-				if array[where].faceup = true {
+		function lift(where) {
+			for (pos=0, pos<array.index; ++pos) { 
+				if array[where].faceup === true {
 				 	return false;
 				}
-				else ()
-				return array[where];
-			 
-			 - when cards match then replace both arrayindex values with null
+			return array[where];
+			}
+		}
 
-			 if matchRule(card1,card2) = true {
+			// - when cards match then replace both arrayindex values with null
+
+			 if matchRule(card1,card2) === true {
 					array[card1], array[card2] = null;
 			 }
 
-	 		- last run winCallBack to see if any cards have "faceup" property of false, if not 
+	 		// - last run winCallBack to see if any cards have "faceup" property of false, if not 
 	 		for (pos=0, pos<array.index; ++pos) {
-	 			if array[pos].faceup = true, return true
-	 		}
+	 			if (!(array[pos].faceup === null)
+	 		} // keep going
 	 		else {
 	 		return "Congratulations, you win!"
 		}
